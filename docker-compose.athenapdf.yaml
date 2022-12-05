@@ -1,6 +1,6 @@
 #ddev-generated
 # Simple template to demonstrate athenapdf
-version: '1'
+version: '1.1'
 services:
   athenapdf:
     image: arachnysdocker/athenapdf-service:2.16.0
@@ -12,3 +12,12 @@ services:
       WEAVER_MAX_CONVERSION_QUEUE: 50
       WEAVER_WORKER_TIMEOUT: 90
       WEAVER_CONVERSION_FALLBACK: "false"
+      VIRTUAL_HOST: $DDEV_HOSTNAME
+      HTTP_EXPOSE: 8080:8080
+    external_links:
+      - "ddev-router:$DDEV_HOSTNAME"
+    expose:
+      - "8080"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
