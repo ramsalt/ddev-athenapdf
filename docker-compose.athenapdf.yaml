@@ -1,0 +1,14 @@
+#ddev-generated
+# Simple template to demonstrate athenapdf
+version: '1'
+services:
+  athenapdf:
+    image: arachnysdocker/athenapdf-service:2.16.0
+    container_name: ddev-${DDEV_SITENAME}-athenapdf
+    environment:
+      WEAVER_AUTH_KEY: weaver-auth-key
+      WEAVER_ATHENA_CMD: "athenapdf -S"
+      WEAVER_MAX_WORKERS: 10
+      WEAVER_MAX_CONVERSION_QUEUE: 50
+      WEAVER_WORKER_TIMEOUT: 90
+      WEAVER_CONVERSION_FALLBACK: "false"
